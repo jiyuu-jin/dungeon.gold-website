@@ -1,10 +1,8 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 
 <script type="text/javascript">
-
 var ctx = null;
 var gameMap = [
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -18,7 +16,6 @@ var gameMap = [
 	0, 1, 1, 1, 0, 1, 1, 1, 1, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 ];
-
 var tileW = 40, tileH = 40;
 var mapW = 10, mapH = 10;
 var currentSecond = 0, frameCount = 0, framesLastSecond = 0;
@@ -30,29 +27,27 @@ window.onload = function()
 	ctx.font = "bold 10pt sans-serif";
 };
 
-function drawGame()
-{
+function drawGame() {
 	if(ctx==null) { return; }
 
-
 	var sec = Math.floor(Date.now()/1000);
-	if(sec!=currentSecond)
-	{
+	if(sec!=currentSecond) {
 		currentSecond = sec;
 		framesLastSecond = frameCount;
 		frameCount = 1;
 	}
-	else { frameCount++; }
-
+	else { 
+        frameCount++; 
+    }
 
 	for(var y = 0; y < mapH; ++y) {
 		for(var x = 0; x < mapW; ++x) {
 			switch(gameMap[((y*mapW)+x)]) {
 				case 0:
-					ctx.fillStyle = "#000000";
+					ctx.fillStyle = "#685b48";
 					break;
 				default:
-					ctx.fillStyle = "#ccffcc";
+					ctx.fillStyle = "#5aa457";
 			}
 
 			ctx.fillRect( x*tileW, y*tileH, tileW, tileH);
@@ -64,8 +59,6 @@ function drawGame()
 
 	requestAnimationFrame(drawGame);
 }
-
-
 </script>
 
 </head>
@@ -75,4 +68,3 @@ function drawGame()
 
 </body>
 </html>
-
