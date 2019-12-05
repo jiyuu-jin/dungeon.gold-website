@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=500, initial-scale=1">
 
 <script type="text/javascript">
 var ctx = null;
+
 var gameMap = [
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0,
@@ -26,6 +28,7 @@ var gameMap = [
 	0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 ];
+
 var tileW = 40, tileH = 40;
 var mapW = 20, mapH = 20;
 var currentSecond = 0, frameCount = 0, framesLastSecond = 0, lastFrameTime = 0;
@@ -142,15 +145,16 @@ function drawGame()
 
 	var sec = Math.floor(Date.now()/1000);
 	if(sec!=currentSecond)
-	{
+{
 		currentSecond = sec;
 		framesLastSecond = frameCount;
 		frameCount = 1;
 	}
-	else { frameCount++; }
+	else { 
+		frameCount++; 
+	}
 
-	if(!player.processMovement(currentFrameTime))
-	{
+	if(!player.processMovement(currentFrameTime)) {
 		if(keysDown[38] && player.tileFrom[1]>0 && gameMap[toIndex(player.tileFrom[0], player.tileFrom[1]-1)]==1) { player.tileTo[1]-= 1; }
 		else if(keysDown[40] && player.tileFrom[1]<(mapH-1) && gameMap[toIndex(player.tileFrom[0], player.tileFrom[1]+1)]==1) { player.tileTo[1]+= 1; }
 		else if(keysDown[37] && player.tileFrom[0]>0 && gameMap[toIndex(player.tileFrom[0]-1, player.tileFrom[1])]==1) { player.tileTo[0]-= 1; }
@@ -199,7 +203,7 @@ function drawGame()
 </head>
 <body>
 
-	<canvas style="display: block; margin: 0 auto;" id="game" width="400" height="400"></canvas>
+	<canvas style="display: block; margin: 0 auto;" id="game" width="500" height="500"></canvas>
 
 </body>
 </html>
